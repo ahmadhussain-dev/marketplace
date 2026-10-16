@@ -2,7 +2,7 @@
 import { Suspense } from "react";
 import { connection } from "next/server";
 import { redirect } from "next/navigation";
-
+import Link from "next/link";
 import { requireRole } from "@/modules/auth/session";
 import LogoutButton from "@/components/auth/logout-button";
 
@@ -40,7 +40,14 @@ async function AdminDashboardContent() {
           Manage seller approvals, users,
           and marketplace operations here.
         </p>
+        <Link
+  href="/admin/orders"
+  className="mt-6 inline-block rounded-md bg-slate-900 px-5 py-3 text-white"
+>
+  Manage Orders
+</Link>
       </div>
+
     </main>
   );
 }

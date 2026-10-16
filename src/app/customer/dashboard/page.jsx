@@ -2,7 +2,7 @@
 import { Suspense } from "react";
 import { connection } from "next/server";
 import { redirect } from "next/navigation";
-
+import Link from "next/link";
 import { requireRole } from "@/modules/auth/session";
 import LogoutButton from "@/components/auth/logout-button";
 
@@ -35,10 +35,19 @@ async function CustomerDashboardContent() {
         Email: {user.email}
       </p>
 
-      <p className="mt-4">
-        Your orders, addresses, and reviews
-        will be available here.
-      </p>
+      <div className="mt-8 flex gap-4">
+  <Link href="/products" className="underline">
+    Browse Products
+  </Link>
+
+  <Link href="/cart" className="underline">
+    My Cart
+  </Link>
+
+  <Link href="/customer/orders" className="underline">
+    My Orders
+  </Link>
+</div>
     </main>
   );
 }

@@ -2,7 +2,7 @@
 import { Suspense } from "react";
 import { connection } from "next/server";
 import { redirect } from "next/navigation";
-
+import Link from "next/link";
 import { requireRole } from "@/modules/auth/session";
 import LogoutButton from "@/components/auth/logout-button";
 
@@ -41,11 +41,15 @@ async function SellerDashboardContent() {
           administrator approval.
         </div>
       ) : (
-        <div className="mt-6 rounded-lg border p-5">
-          Your seller account is approved.
-          Product management will be added
-          in Phase 3.
-        </div>
+       <div className="mt-8 flex gap-4">
+  <Link href="/seller/products" className="underline">
+    Manage Products
+  </Link>
+
+  <Link href="/seller/orders" className="underline">
+    Customer Orders
+  </Link>
+</div>
       )}
     </main>
   );
